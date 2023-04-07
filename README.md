@@ -8,6 +8,11 @@
 
 A user should be able to request the LCS of a Set of Strings by sending a POST request to the server at http://localhost:8080/lcs.
 
+## Technologies Used
+
+- Java
+- Spring Boot with Maven
+
 ## Setup/Installation Requirements
 
 ### Getting the repo
