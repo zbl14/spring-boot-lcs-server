@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>LCS Server</title>
+  </head>
+  <body>
+    <h1>Longest Common Substring Server</h1>
+    <form id="lcsForm">
+      <label for="inputStrings">Input strings (one per line):</label><br />
+      <textarea id="inputStrings" rows="5" cols="30"></textarea><br />
+      <button type="submit">Find Longest Common Substring(s)</button>
+    </form>
+    <h2>Results:</h2>
+    <pre id="output"></pre>
+
+    <script>
+      document
+        .getElementById("lcsForm")
+        .addEventListener("submit", function (event) {
+          event.preventDefault();
+          let inputStrings = document
+            .getElementById("inputStrings")
+            .value.trim()
+            .split("\n");
+          let requestBody = {
+            setOfStrings: inputStrings.map((str) => ({ value: str })),
+          };
+
+          fetch("/lcs", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify(requestBody),
+          })
+            .then((response) => {
+              if (response.ok) {
+                return response.json();
+              } else {
+                return response.text().then((text) => {
+                  throw new Error(
+                    response.status + " " + response.statusText + " - " + text
+                  );
+                });
+              }
+            })
+            .then((data) => {
+              let output = document.getElementById("output");
+              output.textContent = JSON.stringify(data, null, 2);
+            })
+            .catch((error) => {
+              alert(error);
+            });
+        });
+    </script>
+  </body>
+</html>
