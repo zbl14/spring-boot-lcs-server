@@ -6,7 +6,7 @@
 
 ## Description
 
-A user should be able to request the LCS of a Set of Strings by sending a POST request to the server at http://<host>/lcs.
+A user should be able to request the LCS of a Set of Strings by sending a POST request to the server at http://localhost:8080/lcs.
 
 ## Setup/Installation Requirements
 
