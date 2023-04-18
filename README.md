@@ -15,6 +15,11 @@ A user should be able to request the LCS of a Set of Strings by sending a POST r
 
 ## Setup/Installation Requirements
 
+### Required Environment
+
+- Java Development Kit(JDK)
+- Maven
+
 ### Getting the repo
 
 - Clone the repo to your desktop or any directory of your choice
